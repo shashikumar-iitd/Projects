@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Offline Cloud AI - PDF & Audio Processor</title>
+</head>
+<body>
+    <h1>Upload PDF or Audio File</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>PDF File:</label>
+        <input type="file" name="pdf_file" accept=".pdf"><br><br>
+        <label>Audio File:</label>
+        <input type="file" name="audio_file" accept=".mp3,.wav"><br><br>
+        <input type="submit" value="Process">
+    </form>
+    <hr>
+    <h1>Web Search</h1>
+    <form method="post">
+        <label>Web Search Query:</label>
+        <input type="text" name="web_query">
+        <input type="submit" value="Search">
+    </form>
+    <hr>
+    {% if web_results %}
+        <h2>Web Search Results:</h2>
+        <ul>
+        {% for result in web_results %}
+            <li><a href="{{ result['link'] }}" target="_blank">{{ result['title'] }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if pdf_summary %}
+        <h2>PDF Summary:</h2>
+        <pre>{{ pdf_summary }}</pre>
+    {% endif %}
+    {% if audio_transcription %}
+        <h2>Audio Transcription:</h2>
+        <pre>{{ audio_transcription }}</pre>
+    {% endif %}
+</body>
+</html>

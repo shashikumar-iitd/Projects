@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Non-Isothermal Parameters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen"
+      style="background-image: url('{{ url_for('static', filename='bg.jpg') }}'); background-size: cover; background-position: center;">
+  <div class="bg-gray-200 p-4 rounded-lg shadow-lg w-full max-w-md text-black">
+    <h1 class="text-xl font-bold mb-4 text-center">Non-Isothermal Parameters</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="space-y-3 text-sm">
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label for="Tr">Reference Temp (K)</label>
+          <input id="Tr" type="number" name="Tr" step="0.001" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="To">Inlet Temp of A (K)</label>
+          <input id="To" type="number" name="To" step="0.001" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label for="cpA">Cp of A(J/mol.K)</label>
+          <input id="cpA" type="number" name="cpA" step="1" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="cpB">Cp of B(J/mol.K)</label>
+          <input id="cpB" type="number" name="cpB" step="1" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="cpC">Cp of C(J/mol.K)</label>
+          <input id="cpC" type="number" name="cpC" step="1" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="cpD">Cp of D(J/mol.K)</label>
+          <input id="cpD" type="number" name="cpD" step="1" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label for="DeltaHo">Heat of Reaction (J/mol)</label>
+          <input id="DeltaHo" type="number" name="DeltaHo" step="100" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="Ea">Activation Energy (J/mol)</label>
+          <input id="Ea" type="number" name="Ea" step="100" min="0" required class="w-full p-1 rounded text-black text-sm">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="mt-2 bg-blue-600 text-white px-4 py-1.5 rounded font-semibold hover:bg-blue-700 transition text-sm">
+          Calculate
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

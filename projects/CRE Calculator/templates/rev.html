@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Reversibility</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url("{{ url_for('static', filename='bg.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+    }
+    .btn-gray {
+      background-color: #D3D3D3;
+      color: black;
+    }
+    .btn-gray:hover {
+      background-color: #bcbcbc;
+    }
+  </style>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen">
+
+  <!-- Flash Message -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded shadow-lg z-50">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="bg-white bg-opacity-10 backdrop-blur-md p-10 rounded-2xl shadow-2xl w-full max-w-xl text-center">
+    <h1 class="text-3xl font-bold mb-6 text-white">Select Reversibility</h1>
+    <form method="POST">
+      <button name="reversible" value="rev" type="submit" class="btn-gray block w-full font-semibold py-4 my-4 rounded-xl transition duration-200">
+        Reversible
+      </button>
+      <button name="reversible" value="irre" type="submit" class="btn-gray block w-full font-semibold py-4 my-4 rounded-xl transition duration-200">
+        Irreversible
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

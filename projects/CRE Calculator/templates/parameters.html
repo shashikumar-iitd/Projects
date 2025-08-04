@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reactor Parameters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .btn-gray {
+      background-color: #D3D3D3;
+      color: black;
+    }
+    .btn-gray:hover {
+      background-color: #bcbcbc;
+    }
+    .bg-light-gray {
+      background-color: #D3D3D3;
+    }
+  </style>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen"
+      style="background-image: url('{{ url_for('static', filename='bg.jpg') }}');">
+
+  <div class="bg-light-gray p-6 rounded-lg shadow-lg w-full max-w-xl text-black">
+    <h1 class="text-2xl font-bold mb-6 text-center">Enter Reactor Parameters</h1>
+    <form method="POST" class="space-y-4 text-sm">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="v0">Total molar Flow Rate (Moles/hr)</label>
+          <input id="v0" type="number" name="v0" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="y0">Molar Fraction of A</label>
+          <input id="y0" type="number" name="y0" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="rate_const">Rate Constant</label>
+          <input id="Kr" type="number" name="Kr" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="keq">Equilibrium Constant</label>
+          <input id="keq" type="number" name="keq" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="ca0">Initial Concentration of A (moles/cubic metre)</label>
+          <input id="ca0" type="number" name="ca0" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="cb0">Initial Concentration of B (moles/cubic metre)</label>
+          <input id="cb0" type="number" name="cb0" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-2">
+        <div>
+          <label for="ra">Coeff of A</label>
+          <input id="ra" type="number" name="ra" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="rb">Coeff of B</label>
+          <input id="rb" type="number" name="rb" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="rc">Coeff of C</label>
+          <input id="rc" type="number" name="rc" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+        <div>
+          <label for="rd">Coeff of D</label>
+          <input id="rd" type="number" name="rd" required class="w-full p-1.5 rounded text-black text-sm">
+        </div>
+      </div>
+
+      <div>
+        <label for="x">Final Conversion (X)</label>
+        <input id="x" type="number" name="x" step="0.001" required class="w-full p-1.5 rounded text-black text-sm">
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="mt-2 btn-gray px-5 py-1.5 rounded-lg font-semibold transition text-sm">
+          Next
+        </button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
